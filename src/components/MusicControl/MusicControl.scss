@@ -48,15 +48,6 @@
     }
   }
 
-  &__play-icon {
-    width: 0;
-    height: 0;
-    border-top: calc($btn-size / 3) solid transparent;
-    border-bottom: calc($btn-size / 3) solid transparent;
-    border-left: calc($btn-size / 2) solid var(--general-c);
-    margin-left: calc($btn-size / 10);
-  }
-
   &__right-btn {
     width: 0;
     height: 0;
@@ -65,19 +56,18 @@
     border-left: $btn-size solid var(--general-c);
     margin-left: 1rem;
     transition: transform 0.2s, opacity 0.2s;
-
-    &:hover {
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
   }
 
   &__btn {
     cursor: pointer;
     transition: filter 0.2s;
 
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
     &:active {
-      filter: brightness(90%);
+      filter: contrast(400%);
     }
   }
 }

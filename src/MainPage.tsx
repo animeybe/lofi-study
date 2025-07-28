@@ -14,6 +14,12 @@ interface Track {
   file: File;
 }
 
+interface DirectoryInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  webkitdirectory?: string;
+  directory?: string;
+}
+
 const trackTitleFormating = (title: string): string => {
   const badWordsList = [
     "[muzcha.net]",
@@ -72,7 +78,7 @@ const MainPage: React.FC = () => {
       return {
         name: metadata.common.title || file.name.replace(/\.[^/.]+$/, ""),
         path: URL.createObjectURL(file),
-        artist: metadata.common.artist || "Неизвестный исполнитель",
+        artist: metadata.common.artists?.at(0) || "Неизвестный исполнитель",
         album: metadata.common.album || "Без альбома",
         cover: coverUrl,
         file: file,
@@ -179,7 +185,12 @@ const MainPage: React.FC = () => {
                     <span>Выбрать папку с треками</span>
                   </div>
                 ) : (
-                  <ul className="track-list">
+                  <ul
+                    className="track-list"
+                    style={{
+                      overflowY: tracks.length > 4 ? "scroll" : "hidden",
+                      maxHeight: "23rem",
+                    }}>
                     {tracks.map((track, index) => (
                       <li
                         key={index}
@@ -187,15 +198,11 @@ const MainPage: React.FC = () => {
                           currentTrack?.path === track.path ? "active" : ""
                         }`}
                         onClick={() => setCurrentTrack(track)}>
-                        <div className="track-item__logo">
-                          <div className="track-item__logo-mask"></div>
+                        <div className="track-item__name">
+                          {track === currentTrack ? "●" : ""}{" "}
+                          {trackTitleFormating(track.name)}
                         </div>
-                        <div className="track-item__info">
-                          <div className="track-item__name">{track.name}</div>
-                          <div className="track-item__artist">
-                            {track.artist}
-                          </div>
-                        </div>
+                        <div className="track-item__artist">{track.artist}</div>
                       </li>
                     ))}
                   </ul>
@@ -209,6 +216,8 @@ const MainPage: React.FC = () => {
                   directory="true"
                   multiple
                   accept="audio/*"
+                  // Приводим тип к нашему кастомному интерфейсу
+                  {...({} as DirectoryInputProps)}
                 />
               </div>
             </div>

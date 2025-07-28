@@ -117,3 +117,28 @@
     }
   }
 }
+
+.track-list {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  padding: 2rem;
+
+  scrollbar-color: var(--general-bgc) var(--general-c);
+}
+.track-item {
+  padding-bottom: 2rem;
+  font-size: 1rem;
+
+  &__name {
+    padding-bottom: 0.5rem;
+  }
+
+  &__artist {
+    margin-left: 1rem;
+  }
+}

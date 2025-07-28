@@ -2,7 +2,6 @@ import "./MusicControl.scss";
 import React from "react";
 
 interface MusicControlProps {
-  audioRef: React.RefObject<HTMLAudioElement>;
   onPlayPause: () => void;
   onNext: () => void;
   onPrevious: () => void;
@@ -10,7 +9,6 @@ interface MusicControlProps {
 }
 
 const MusicControl: React.FC<MusicControlProps> = ({
-  audioRef,
   onPlayPause,
   onNext,
   onPrevious,
@@ -29,8 +27,8 @@ const MusicControl: React.FC<MusicControlProps> = ({
         }`}
         onClick={onPlayPause}
         title={isPlaying ? "Пауза" : "Воспроизведение"}>
-        <span></span>
-        <span></span>
+        <span style={isPlaying ? { background: "red" } : {}}></span>
+        <span style={isPlaying ? { background: "red" } : {}}></span>
       </div>
 
       <div
