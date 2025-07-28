@@ -1,0 +1,83 @@
+.music-control {
+  $btn-size: 5rem;
+
+  width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  user-select: none;
+
+  &__left-btn {
+    width: 0;
+    height: 0;
+    border-top: calc($btn-size / 2) solid transparent;
+    border-bottom: calc($btn-size / 2) solid transparent;
+    border-right: $btn-size solid var(--general-c);
+    margin-right: 1rem;
+    transition: transform 0.2s, opacity 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+  }
+
+  &__play-pause {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    place-items: center;
+    width: $btn-size;
+    height: $btn-size;
+    border-radius: 50%;
+    background: rgba(var(--general-c-rgb), 0.1);
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(var(--general-c-rgb), 0.2);
+    }
+
+    &.active {
+      background: rgba(var(--general-c-rgb), 0.3);
+    }
+
+    span {
+      width: calc($btn-size / 3.5);
+      height: $btn-size;
+      background: var(--general-c);
+    }
+  }
+
+  &__play-icon {
+    width: 0;
+    height: 0;
+    border-top: calc($btn-size / 3) solid transparent;
+    border-bottom: calc($btn-size / 3) solid transparent;
+    border-left: calc($btn-size / 2) solid var(--general-c);
+    margin-left: calc($btn-size / 10);
+  }
+
+  &__right-btn {
+    width: 0;
+    height: 0;
+    border-top: calc($btn-size / 2) solid transparent;
+    border-bottom: calc($btn-size / 2) solid transparent;
+    border-left: $btn-size solid var(--general-c);
+    margin-left: 1rem;
+    transition: transform 0.2s, opacity 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    transition: filter 0.2s;
+
+    &:active {
+      filter: brightness(90%);
+    }
+  }
+}

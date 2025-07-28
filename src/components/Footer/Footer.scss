@@ -1,0 +1,20 @@
+.footer {
+  flex: 0 0 70px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+  }
+
+  &__link {
+    margin-right: 3rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

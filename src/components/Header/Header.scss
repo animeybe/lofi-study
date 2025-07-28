@@ -1,0 +1,27 @@
+.header {
+  flex: 0 0 70px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid var(--general-c);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_settings {
+  }
+
+  &__music {
+  }
+
+  &__author {
+  }
+
+  &__item {
+    margin-right: 5rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
