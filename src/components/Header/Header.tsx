@@ -1,25 +1,40 @@
 import "./Header.scss";
 
 interface HeaderProps {
-  active: boolean;
-  setActive: (val: boolean) => void;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+  activeTab: "music" | "radio";
+  setActiveTab: (tab: "music" | "radio") => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ active, setActive }) => {
+const Header: React.FC<HeaderProps> = ({
+  setActive,
+  activeTab,
+  setActiveTab,
+}) => {
   return (
-    <>
-      <header className="header">
-        <div className="header__music header__item">Music</div>
-        <div className="header__author header__item">Author</div>
-        <div
-          className="header_settings header__item"
-          onClick={() => {
-            if (!active) setActive(true);
-          }}>
-          Settings
-        </div>
-      </header>
-    </>
+    <header className="header">
+      <div
+        className={`header__music header__item ${
+          activeTab === "music" ? "active" : ""
+        }`}
+        onClick={() => setActiveTab("music")}>
+        Music
+      </div>
+      <div
+        className={`header__radio header__item ${
+          activeTab === "radio" ? "active" : ""
+        }`}
+        onClick={() => setActiveTab("radio")}>
+        RadioFM
+      </div>
+      <div
+        className="header_settings header__item"
+        onClick={() => {
+          setActive((val: boolean) => !val);
+        }}>
+        Settings
+      </div>
+    </header>
   );
 };
 

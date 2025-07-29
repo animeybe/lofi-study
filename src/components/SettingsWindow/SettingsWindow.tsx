@@ -2,15 +2,14 @@ import "./SettingsWindow.scss";
 import React, { useEffect, useState } from "react";
 
 interface SettingsWindowProps {
-  active: boolean;
-  setActive: (val: boolean) => void;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
   volume: number;
   onVolumeChange: (volume: number) => void;
 }
 
 const colorOptions = [
   { id: 1, generalColor: "#e8a236", backgroundColor: "#212121" },
-  { id: 2, generalColor: "#998e91", backgroundColor: "#19080f" },
+  { id: 2, generalColor: "#D596F7", backgroundColor: "#370D8A" },
   { id: 3, generalColor: "#BAF2C5", backgroundColor: "#5C1B68" },
   { id: 4, generalColor: "#8BDA59", backgroundColor: "#1D4836" },
   { id: 5, generalColor: "#E3A215", backgroundColor: "#0D457C" },
@@ -18,7 +17,6 @@ const colorOptions = [
 ];
 
 const SettingsWindow: React.FC<SettingsWindowProps> = ({
-  active,
   setActive,
   volume,
   onVolumeChange,
@@ -63,12 +61,12 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
       <div
         className="settings-window"
         onClick={(e) => {
-          if (e.target === e.currentTarget) setActive(!active);
+          if (e.target === e.currentTarget) setActive((val: boolean) => !val);
         }}>
         <div className="settings-window-content">
           <div
             className="settings__close-btn"
-            onClick={() => setActive(!active)}>
+            onClick={() => setActive((val: boolean) => !val)}>
             Закрыть
           </div>
           <div className="settings-params">

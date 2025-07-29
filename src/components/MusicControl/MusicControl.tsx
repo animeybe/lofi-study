@@ -6,6 +6,7 @@ interface MusicControlProps {
   onNext: () => void;
   onPrevious: () => void;
   isPlaying: boolean;
+  disabled?: boolean;
 }
 
 const MusicControl: React.FC<MusicControlProps> = ({
@@ -13,27 +14,38 @@ const MusicControl: React.FC<MusicControlProps> = ({
   onNext,
   onPrevious,
   isPlaying,
+  disabled = false,
 }) => {
   return (
     <div className="music-control">
       <div
-        className="music-control__left-btn music-control__btn"
-        onClick={onPrevious}
+        className={`music-control__left-btn music-control__btn ${
+          disabled ? "disabled" : ""
+        }`}
+        onClick={() => {
+          if (!disabled) return onPrevious();
+        }}
         title="Предыдущий трек"></div>
 
       <div
         className={`music-control__play-pause music-control__btn ${
-          isPlaying ? "active" : ""
-        }`}
-        onClick={onPlayPause}
+          disabled ? "disabled" : ""
+        } ${isPlaying ? "active" : ""}`}
+        onClick={() => {
+          if (!disabled) return onPlayPause();
+        }}
         title={isPlaying ? "Пауза" : "Воспроизведение"}>
         <span style={isPlaying ? { background: "red" } : {}}></span>
         <span style={isPlaying ? { background: "red" } : {}}></span>
       </div>
 
       <div
-        className="music-control__right-btn music-control__btn"
-        onClick={onNext}
+        className={`music-control__right-btn music-control__btn ${
+          disabled ? "disabled" : ""
+        }`}
+        onClick={() => {
+          if (!disabled) return onNext();
+        }}
         title="Следующий трек"></div>
     </div>
   );
