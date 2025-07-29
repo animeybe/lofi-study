@@ -10,11 +10,11 @@ interface SettingsWindowProps {
 
 const colorOptions = [
   { id: 1, generalColor: "#e8a236", backgroundColor: "#212121" },
-  { id: 2, generalColor: "#63edc5", backgroundColor: "#571932" },
+  { id: 2, generalColor: "#998e91", backgroundColor: "#19080f" },
   { id: 3, generalColor: "#BAF2C5", backgroundColor: "#5C1B68" },
   { id: 4, generalColor: "#8BDA59", backgroundColor: "#1D4836" },
-  { id: 5, generalColor: "#C0B173", backgroundColor: "#521DC0" },
-  { id: 6, generalColor: "#193024", backgroundColor: "#DFC893" },
+  { id: 5, generalColor: "#E3A215", backgroundColor: "#0D457C" },
+  { id: 6, generalColor: "#F0DC9B", backgroundColor: "#7523CE" },
 ];
 
 const SettingsWindow: React.FC<SettingsWindowProps> = ({
