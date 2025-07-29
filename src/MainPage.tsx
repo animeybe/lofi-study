@@ -54,6 +54,8 @@ const MainPage: React.FC = () => {
   const [volume, setVolume] = useState(0.7);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [hasTracks, setHasTracks] = useState(false);
+  const trackProgressSliderRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -97,6 +99,8 @@ const MainPage: React.FC = () => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
+
+    setHasTracks(!!files && files.length > 0);
 
     const audioFiles = Array.from(files).filter((file) =>
       file.type.startsWith("audio/")
@@ -372,6 +376,8 @@ const MainPage: React.FC = () => {
               max={duration || 100}
               value={currentTime}
               onChange={handleSeek}
+              ref={trackProgressSliderRef}
+              disabled={!hasTracks}
               className="track-progress__slider"
             />
             <div className="track-progress__time track-progress__time_duration">

@@ -107,7 +107,12 @@ const SettingsWindow: React.FC<SettingsWindowProps> = ({
                         color.id
                       )
                     }
-                    style={{ background: color.generalColor }}
+                    style={
+                      {
+                        "--color-select-element": color.generalColor,
+                        "--color-bgc-select-element": color.backgroundColor,
+                      } as React.CSSProperties
+                    }
                     title={`Выбрать цвет ${color.generalColor}`}
                   />
                 ))}

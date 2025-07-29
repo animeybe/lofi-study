@@ -1,7 +1,7 @@
 .settings-window {
   width: 100vw;
   height: 100vh;
-  background-color: rgba($color: #000000, $alpha: 0.2);
+  background-color: rgba($color: #000000, $alpha: 0.8);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -16,7 +16,7 @@
   height: 90vh;
   background-color: var(--general-bgc);
   border-radius: 5%;
-  box-shadow: 0 0 0.5rem #909090;
+  box-shadow: 0 0 1rem #909090;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,22 @@
           height: 4rem;
           border-radius: 50%;
           margin: 0 1rem 1rem 0;
+          border: 0.2rem solid #e8e8e8;
           cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          background: var(--color-select-element);
+          transform: rotate(30deg);
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: var(--color-bgc-select-element);
+          }
         }
       }
     }
