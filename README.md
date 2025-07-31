@@ -1,69 +1,81 @@
-# React + TypeScript + Vite
+# LO-FI study
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для фонового прослушивания lo-fi музыки и радио. Идеально подходит для учёбы, работы или релаксации.
 
-Currently, two official plugins are available:
+**Особенности:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Плеер с lo-fi треками
+- Радиостанции в реальном времени
+- Минималистичный интерфейс
+- Работает через Yandex Music API
 
-## Expanding the ESLint configuration
+## Разделы
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. [Установка](#installation)
+2. [Настройка](#configuration)
+3. [Запуск](#starting)
+4. [Скриншоты](#screenshots)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Установка <a id="installation"></a>
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/animeybe/LO-FIstudy.git
+   ```
+2. Установите зависимости для фронтенда:
+   cd lofi-study/
+   npm install
+3. Установите зависимости для бэкенда:
+   cd src/services/yandex-music-proxy/
+   npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙ Настройка <a id="configuration"></a>
+
+1. Создайте файл `.env` в папке `yandex-music-proxy/`:
+   ```env
+   YANDEX_MUSIC_TOKEN=ваш_токен
+   YANDEX_UID=ваш_uid
+   PORT=3001
+   ```
+2. Получите токен [здесь](https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d) и идентификатор [здесь](https://mail.yandex.ru/).
+   P.s. Смотри в адресной строке
+
+## 🚀 Запуск <a id="starting"></a>
+
+### Backend (Yandex Music Proxy):
+
+Перейдём в директорию сервера:
+
+```bash
+cd /src/services/yandex-music-proxy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Запускаем север:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+node yandex-music-proxy.js
 ```
+
+или же
+
+```bash
+nodemon yandex-music-proxy.js
+```
+
+### Frontend (Веб-приложение):
+
+Перейдём в директорию проекта:
+
+```bash
+cd lofi-study/
+```
+
+Запускаем сайт:
+
+```bash
+npm run dev
+```
+
+## 🖼 Скриншоты <a id="screenshots"></a>
+
+(ПОКА ПУСТО)
